@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "./Footer.astro";
 
 interface Props {
     title: string;
@@ -21,6 +23,16 @@ const {
 		<title>{title}</title>
 	</head>
 	<body>
+		<Navbar 
+			logo="./src/assets/logo.png"
+			links={[
+				{ label: 'Inicio', href: '/' },
+				{ label: 'About', href: '/about' },
+				{ label: 'Preguntas frecuentes', href: '/faqs' },
+				{ label: 'Contacto', href: '/contacto' }
+			]}
+		/>
         <slot/>
+		<Footer/>
 	</body>
 </html>

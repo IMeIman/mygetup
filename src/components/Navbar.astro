@@ -1,0 +1,109 @@
+---
+interface Props {
+    logo?: string;
+    logoText?: string;
+    links: Array<{
+        label: string;
+        href: string;
+    }>;
+}
+
+const { logo = 'Logo', links = [] } = Astro.props;
+---
+
+<nav class="sticky top-0 z-50 flex flex-row justify-center bg-white shadow-md w-full">
+    <div class="container flex flex-col w-11/12">
+        <div class="flex flex-row justify-between items-center h-16 md:h-20">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                {logo && (
+                    <img src={logo} alt="Logo" class="h-10 w-auto md:h-12" />
+                )}
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex gap-8">
+                {links.map((link) => (
+                    <a
+                        href={link.href}
+                        class="text-gray-700 hover:text-violet-500 font-medium transition-colors duration-200"
+                    >
+                        {link.label}
+                    </a>
+                ))}
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button
+                id="navbar-toggle"
+                class="md:hidden flex flex-col gap-1.5 w-8 h-8 justify-center items-center group"
+                aria-label="Toggle menu"
+                aria-expanded="false"
+            >
+                <span class="w-6 h-0.5 bg-gray-900 rounded transition-all duration-300 group-aria-expanded:rotate-45 group-aria-expanded:translate-y-2"></span>
+                <span class="w-6 h-0.5 bg-gray-900 rounded transition-all duration-300 group-aria-expanded:opacity-0"></span>
+                <span class="w-6 h-0.5 bg-gray-900 rounded transition-all duration-300 group-aria-expanded:-rotate-45 group-aria-expanded:-translate-y-2"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div
+            id="navbar-menu"
+            class="max-h-0 overflow-hidden md:hidden transition-all duration-300 ease-in-out"
+        >
+            <div class="flex flex-col gap-4 pb-4">
+                {links.map((link) => (
+                    <a
+                        href={link.href}
+                        class="text-gray-700 hover:text-violet-500 font-medium transition-colors duration-200 pl-4 border-l-2 border-transparent hover:border-violet-500"
+                    >
+                        {link.label}
+                    </a>
+                ))}
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const toggle = document.getElementById('navbar-toggle');
+    const menu = document.getElementById('navbar-menu');
+
+    if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+            const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+            const newState = !isExpanded;
+
+            toggle.setAttribute('aria-expanded', String(newState));
+
+            if (newState) {
+                menu.style.maxHeight = menu.scrollHeight + 'px';
+            } else {
+                menu.style.maxHeight = '0px';
+            }
+        });
+
+        // Cerrar menú al hacer click en un link
+        const links = menu.querySelectorAll('a');
+        links.forEach((link) => {
+            link.addEventListener('click', () => {
+                toggle.setAttribute('aria-expanded', 'false');
+                menu.style.maxHeight = '0px';
+            });
+        });
+
+        // Cerrar menú al redimensionar a desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                toggle.setAttribute('aria-expanded', 'false');
+                menu.style.maxHeight = '0px';
+            }
+        });
+    }
+</script>
+
+<style>
+    nav {
+        border-bottom: 1px solid rgb(243, 244, 246);
+    }
+</style>

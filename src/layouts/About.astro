@@ -14,18 +14,47 @@ import Card from "../components/Card.astro"
             md:grid-cols-3
             md:grid-rows-2
             ">
-            <div class="col-start-1 col-end-3 row-start-1 row-end-3 justify-between">
-                <Card title="SERVICIO DIGITAL" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus totam odio quo tenetur voluptate cupiditate harum voluptatum molestiae quasi eaque." imageUrl="./src/assets/laptop.png"></Card>
+            <div class="col-start-1 col-end-3 row-start-1 row-end-2">
+                <Card title="Tarjeta 1" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus totam odio quo tenetur voluptate cupiditate harum voluptatum molestiae quasi eaque." imageUrl="./src/assets/laptop.png" li={[
+                    {
+                    text: "Conoce más acerca de la edición",
+                    },
+                    {
+                    text: "Suscripción anual",
+                    },
+                    {
+                    text: "Membresías mensuales",
+                    }
+                ]} link={{
+                    text: "Conoce más sobre el diseño web", href: "/"
+                }}></Card>
             </div>
 
             <div class="col-start-3 col-end-4 row-start-1 row-end-2">
-                <Card title="DISEÑO Y BRAND" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus totam odio quo."
-                imageUrl="./src/assets/flyers.png"></Card>
+                <Card title="Creación de Website" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus totam odio quo."
+                imageUrl="./src/assets/flyers.png" link={{
+                    text: "Conoce más sobre la programación orientada a objetos", href: "/"
+                }}></Card>
             </div>
 
+            <div class="col-start-1 col-end-2 row-start-2 row-end-3">
+                <Card title="Tarjeta 3" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus totam odio quo." imageUrl="./src/assets/laptop.png" link={{
+                    text: "Conoce más sobre el diseño UX/UI", href: "/"
+                }}></Card>
+            </div>
             
-            <div class="col-start-3 col-end-4 row-start-2 row-end-3">
-                <Card title="WEBSITES" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet" imageUrl="./src/assets/flyers.png"></Card>
+            <div class="col-start-2 col-end-4 row-start-2 row-end-3">
+                <Card title="Tarjeta 4" description="Lorem ipsum dolor sit amet consectetur adipisicing elit." imageUrl="./src/assets/flyers.png" button={true} buttonLabel="Empieza ahora ->" buttonVariant="primary" li={[
+                    {
+                    text: "Conoce más acerca de la edición",
+                    },
+                    {
+                    text: "Suscripción anual",
+                    },
+                    {
+                    text: "Membresías mensuales",
+                    }
+                ]}></Card>
             </div>
         </div>
     </div>

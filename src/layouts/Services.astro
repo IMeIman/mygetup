@@ -1,0 +1,102 @@
+---
+import ServiceCard from "../components/ServiceCard.astro";
+
+interface Service {
+    title: string;
+    description: string;
+    price: string | number;
+    period?: string;
+    features: string[];
+    buttonLabel?: string;
+    buttonHref?: string;
+    highlighted?: boolean;
+}
+
+interface Props {
+    title?: string;
+    subtitle?: string;
+    description?: string;
+    services?: Service[];
+}
+
+const {
+    title = "Nuestros Servicios",
+    subtitle = "Elige el plan perfecto para ti",
+    description = "Ofrecemos diferentes planes adaptados a tus necesidades",
+    services = [
+        {
+            title: "Plan Básico",
+            description: "Perfecto para empezar",
+            price: 29,
+            period: "mes",
+            features: [
+                "Acceso básico",
+                "Soporte por email",
+                "1 proyecto",
+                "5GB de almacenamiento"
+            ],
+            buttonLabel: "Comenzar",
+            buttonHref: "#"
+        },
+        {
+            title: "Plan Profesional",
+            description: "Lo más popular",
+            price: 79,
+            period: "mes",
+            features: [
+                "Acceso completo",
+                "Soporte prioritario",
+                "5 proyectos",
+                "100GB de almacenamiento",
+                "Análisis avanzado"
+            ],
+            buttonLabel: "Contratar",
+            buttonHref: "#",
+            highlighted: true
+        },
+        {
+            title: "Plan Empresarial",
+            description: "Solución completa",
+            price: 199,
+            period: "mes",
+            features: [
+                "Acceso ilimitado",
+                "Soporte 24/7",
+                "Proyectos ilimitados",
+                "Almacenamiento ilimitado",
+                "API avanzada",
+                "Gestor de cuenta dedicado"
+            ],
+            buttonLabel: "Contactar",
+            buttonHref: "#"
+        }
+    ]
+} = Astro.props;
+---
+
+<section class="flex flex-row justify-center">
+    <div class="container flex flex-col w-11/12 gap-12 pt-24 pb-24">
+        <!-- Header -->
+        <div class="flex flex-col gap-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-semibold text-gray-900">{title}</h1>
+            <h2 class="text-xl md:text-2xl font-medium text-violet-500">{subtitle}</h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">{description}</p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            {services.map((service) => (
+                <ServiceCard
+                    title={service.title}
+                    description={service.description}
+                    price={service.price}
+                    period={service.period}
+                    features={service.features}
+                    buttonLabel={service.buttonLabel}
+                    buttonHref={service.buttonHref}
+                    highlighted={service.highlighted}
+                />
+            ))}
+        </div>
+    </div>
+</section>

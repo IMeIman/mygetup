@@ -1,0 +1,83 @@
+---
+import AccordionItem from "../components/AccordionItem.astro";
+
+interface FAQ {
+    question: string;
+    answer: string;
+}
+
+interface Props {
+    title?: string;
+    subtitle?: string;
+    description?: string;
+    faqs?: FAQ[];
+    columns?: 1 | 2;
+}
+
+const {
+    title = "Preguntas Frecuentes",
+    subtitle = "Resolvemos tus dudas",
+    description = "Encuentra respuestas a las preguntas más comunes sobre nuestros servicios.",
+    faqs = [
+        {
+            question: "¿Cuál es el período de prueba?",
+            answer: "Ofrecemos un período de prueba gratuito de 14 días para todos nuestros planes. Durante este tiempo tendrás acceso completo a todas las características del plan que elijas."
+        },
+        {
+            question: "¿Puedo cambiar de plan en cualquier momento?",
+            answer: "Sí, puedes cambiar o cancelar tu plan en cualquier momento desde tu panel de control. Si cambias a un plan de mayor costo, los cambios se aplicarán inmediatamente. Si cambias a un plan de menor costo, se aplicará en el próximo ciclo de facturación."
+        },
+        {
+            question: "¿Qué métodos de pago aceptan?",
+            answer: "Aceptamos todas las tarjetas de crédito principales (Visa, Mastercard, American Express), transferencia bancaria y PayPal. Los pagos se procesan de forma segura a través de nuestro procesador de pagos certificado."
+        },
+        {
+            question: "¿Hay contrato de largo plazo?",
+            answer: "No, todos nuestros planes son mensuales sin compromiso a largo plazo. Puedes cancelar tu suscripción en cualquier momento sin penalizaciones."
+        },
+        {
+            question: "¿Ofrecen descuentos por pago anual?",
+            answer: "Sí, si pagas anualmente recibes un descuento del 20% en cualquier plan. Esta es una excelente forma de ahorrar si planeas usar nuestro servicio por más tiempo."
+        },
+        {
+            question: "¿Cómo obtienen soporte técnico?",
+            answer: "Todos nuestros clientes tienen acceso a soporte por email. Los planes Profesional y Empresarial incluyen soporte prioritario. El plan Empresarial también incluye soporte 24/7 por teléfono y chat en vivo."
+        }
+    ],
+    columns = 1
+} = Astro.props;
+---
+
+<section class="flex flex-row justify-center">
+    <div class="container flex flex-col w-11/12 gap-12 pt-24 pb-24">
+        <!-- Header -->
+        <div class="flex flex-col gap-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-semibold text-gray-900">{title}</h1>
+            <h2 class="text-xl md:text-2xl font-medium text-violet-500">{subtitle}</h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">{description}</p>
+        </div>
+
+        <!-- FAQs Grid -->
+        <div class={`grid gap-6 ${
+            columns === 2 
+                ? 'grid-cols-1 md:grid-cols-2' 
+                : 'grid-cols-1'
+        }`}>
+            {faqs.map((faq, index) => (
+                <AccordionItem
+                    question={faq.question}
+                    answer={faq.answer}
+                    id={`faq-${index}`}
+                />
+            ))}
+        </div>
+
+<style>
+    .accordion-icon {
+        transform-origin: center;
+    }
+
+    .accordion-icon.rotate-180 {
+        transform: rotate(180deg);
+    }
+</style>
