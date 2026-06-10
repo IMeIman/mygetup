@@ -1,0 +1,17 @@
+---
+const {
+    label,
+    variant = "primary"
+} = Astro.props;
+interface Props {
+    label: string,
+    variant?: 'primary' | 'secondary'
+}
+const variants = {
+    primary: "bg-violet-500 text-white font-semibold rounded pt-1 pb-1 pl-8 pr-8",
+    secondary: "text-violet-500 font-semibold border border-violet-500 rounded pt-1 pb-1 pl-8 pr-8"
+}
+---
+<button class={variants[variant]}>
+    {label}
+</button>

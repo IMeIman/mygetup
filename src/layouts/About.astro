@@ -1,0 +1,32 @@
+---
+import Card from "../components/Card.astro"
+---
+
+<section class="bg-gray-50 flex flex-row justify-center">
+    <div class="container w-11/12 pt-24 pb-24 gap-8">
+        <div class="gap-8 mb-8 flex flex-col items-center">
+            <h2 class="font-semibold text-4xl">LOREM IPSUM DOLOR SIT AMET.</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum, eligendi!</p>
+        </div>
+
+        <div class="flex flex-col gap-8
+            md:grid
+            md:grid-cols-3
+            md:grid-rows-2
+            ">
+            <div class="col-start-1 col-end-3 row-start-1 row-end-3 justify-between">
+                <Card title="SERVICIO DIGITAL" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus totam odio quo tenetur voluptate cupiditate harum voluptatum molestiae quasi eaque." imageUrl="./src/assets/laptop.png"></Card>
+            </div>
+
+            <div class="col-start-3 col-end-4 row-start-1 row-end-2">
+                <Card title="DISEÑO Y BRAND" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus totam odio quo."
+                imageUrl="./src/assets/flyers.png"></Card>
+            </div>
+
+            
+            <div class="col-start-3 col-end-4 row-start-2 row-end-3">
+                <Card title="WEBSITES" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet" imageUrl="./src/assets/flyers.png"></Card>
+            </div>
+        </div>
+    </div>
+</section>

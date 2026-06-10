@@ -1,0 +1,23 @@
+---
+import Button from "../components/Button.astro"
+---
+
+<section class="flex flex-row justify-center">
+    <div class="container flex flex-col gap-12 pt-24 pb-24 w-11/12
+    md:pt-48
+    md:pb-48
+    md:grid
+    md:grid-cols-2
+    md:grid-rows-1">
+        <div class="flex flex-col justify-center gap-8">
+            <h1 class="font-bold text-5xl">LOREM IPSUM DOLOR SIT AMET.
+            </h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, at.</p>
+            <div class="flex flex-col md:flex-row gap-4">
+                <Button label="Cotiza aquí" variant="secondary"></Button>
+                <Button label="Cotiza aquí"></Button>
+            </div>
+        </div>
+        <img src="/src/assets/laptop.png" alt="hero image">
+    </div>
+</section>
