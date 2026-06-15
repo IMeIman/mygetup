@@ -1,0 +1,44 @@
+---
+interface Props {
+  images: string[];
+}
+
+const { images } = Astro.props;
+
+// TRUCO: Si el array tiene pocos elementos (como un solo logo), 
+// lo multiplicamos para asegurarnos de que llene toda la pantalla.
+const singleLogoMode = images.length < 5;
+const extendedImages = singleLogoMode 
+  ? [...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images] 
+  : images;
+---
+
+<div class="w-full flex overflow-hidden select-none [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+  
+  <ul class="flex items-center shrink-0 min-w-full justify-around py-4 animate-infinite-scroll">
+    {extendedImages.map((src) => (
+      <li class="mx-12 shrink-0">
+        <img 
+          src={src} 
+          alt="Logo" 
+          class="h-16 w-auto object-contain" 
+          loading="eager"
+        />
+      </li>
+    ))}
+  </ul>
+  
+  <ul class="flex items-center shrink-0 min-w-full justify-around py-4 animate-infinite-scroll" aria-hidden="true">
+    {extendedImages.map((src) => (
+      <li class="mx-12 shrink-0">
+        <img 
+          src={src} 
+          alt="Logo" 
+          class="h-16 w-auto object-contain" 
+          loading="eager"
+        />
+      </li>
+    ))}
+  </ul>
+
+</div>
