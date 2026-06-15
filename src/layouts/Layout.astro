@@ -35,4 +35,37 @@ const {
         <slot/>
 		<Footer/>
 	</body>
+
+	<script>
+  const setupFadeAnimation = () => {
+    const cards = document.querySelectorAll('.card-fade');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        // Si la tarjeta entra en la pantalla
+        if (entry.isIntersecting) {
+          // Quitamos el estado oculto y activamos su posición original
+          entry.target.classList.remove('opacity-0', 'translate-y-8');
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          
+          // Opcional: Dejar de observar la tarjeta una vez que ya apareció
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      // Configuración: se activa cuando el 10% de la tarjeta es visible
+      threshold: 0.1,
+      // Margen inferior para que la animación empiece un poquito antes de que golpee el borde
+      rootMargin: '0px 0px -50px 0px' 
+    });
+
+    cards.forEach((card) => observer.observe(card));
+  };
+
+  // Ejecuta al cargar la página
+  setupFadeAnimation();
+
+  // Si usas View Transitions de Astro, esto evita que se rompa al navegar entre páginas
+  document.addEventListener('astro:after-swap', setupFadeAnimation);
+</script>
 </html>

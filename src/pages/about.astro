@@ -1,8 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import About from "../layouts/About.astro";
+import InfiniteCarousel from "../components/InfiniteCarousel.astro";
+
+
+const misImagenes = [
+  './src/assets/logo.png',
+  './src/assets/flyers.png',
+  './src/assets/laptop.png',
+  './src/assets/image-example.png'
+];
 ---
 
 <Layout title="About" description="Conoce más sobre nosotros">
     <About/>
+    <InfiniteCarousel images={misImagenes}/>
 </Layout>

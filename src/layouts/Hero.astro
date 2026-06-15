@@ -2,22 +2,35 @@
 import Button from "../components/Button.astro"
 ---
 
-<section class="flex flex-row justify-center">
-    <div class="container flex flex-col gap-12 pt-24 pb-24 w-11/12
+<section class="relative flex flex-row justify-center min-h-screen overflow-hidden">
+    
+    <video 
+        autoplay 
+        loop 
+        muted 
+        playsinline 
+        class="absolute top-0 left-0 w-full h-full object-cover z-0 pointer-events-none"
+    >
+        <source src="./src/assets/paisaje2.MOV" type="video/mp4" />
+    </video>
+
+    <div class="absolute top-0 left-0 w-full h-full bg-black/40 z-10"></div>
+
+    <div class="container relative z-20 flex flex-col gap-12 pt-24 pb-24 w-11/12
     md:pt-48
     md:pb-48
     md:grid
     md:grid-cols-2
-    md:grid-rows-1">
-        <div class="flex flex-col justify-center gap-8">
-            <h1 class="font-bold text-5xl">LOREM IPSUM DOLOR SIT AMET.
-            </h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, at.</p>
+    md:grid-rows-1 text-white"> <div class="flex flex-col justify-center gap-8">
+            <h1 class="font-bold text-5xl uppercase">Lorem ipsum dolor sit amet.</h1>
+            <p class="text-gray-200">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, at.</p>
             <div class="flex flex-col md:flex-row gap-4">
                 <Button label="Cotiza aquí" variant="secondary"></Button>
                 <Button label="Cotiza aquí"></Button>
             </div>
         </div>
-        <img src="/src/assets/laptop.png" alt="hero image">
+
+        <div class="hidden md:flex items-center justify-center">
+        </div>
     </div>
 </section>
