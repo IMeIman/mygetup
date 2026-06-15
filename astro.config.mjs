@@ -3,6 +3,6 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   site: 'https://imeiman.github.io',
-  base: '/newgetup',
+  base: '/mygetup',
   integrations: [tailwind()]
 });
